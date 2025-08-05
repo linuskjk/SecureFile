@@ -27,12 +27,12 @@ if (count($rate) >= 10) {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'my2fasender@gmail.com';
-                $mail->Password = 'eavkxgvlgzpyhusa';
+                $mail->Username = '';
+                $mail->Password = '';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('my2fasender@gmail.com', 'SecureFile');
+                $mail->setFrom('', 'SecureFile');
                 $mail->addAddress($email, $username);
 
                 $resetUrl = "https://{$_SERVER['HTTP_HOST']}/SecureFile/reset_limit.php?username=" . urlencode($username) . "&ip=" . urlencode($ip);
@@ -124,4 +124,5 @@ $fileObj = [
 $targetFolder['files'][] = $fileObj;
 
 file_put_contents($userDataFile, json_encode($userData, JSON_PRETTY_PRINT));
+
 echo "File uploaded and encrypted successfully";
