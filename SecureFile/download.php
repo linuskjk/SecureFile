@@ -57,12 +57,12 @@ if (count($rate) >= 10) {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'my2fasender@gmail.com';
-                $mail->Password = 'eavkxgvlgzpyhusa';
+                $mail->Username = '';
+                $mail->Password = '';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('my2fasender@gmail.com', 'SecureFile');
+                $mail->setFrom('', 'SecureFile');
                 $mail->addAddress($email, $username);
 
                 $resetUrl = "https://{$_SERVER['HTTP_HOST']}/SecureFile/reset_limit.php?username=" . urlencode($username) . "&ip=" . urlencode($ip);
@@ -89,4 +89,5 @@ header('Content-Type: application/octet-stream');
 header('Content-Disposition: attachment; filename="' . basename($orig_name) . '"');
 header('Content-Length: ' . strlen($decrypted));
 echo $decrypted;
+
 exit;
