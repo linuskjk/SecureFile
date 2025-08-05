@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SecureFile - Login</title>
+  <link rel="stylesheet" href="style.css?v=100">
+</head>
+<body>
+  <div class="card" id="loginSection">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+      <button id="loginBtn">Login</button>
+      <button id="showRegisterBtn">Create Account</button>
+    </div>
+    <p id="loginStatus"></p>
+  </div>
+
+  <div class="card" id="registerSection" style="display:none;">
+    <h2>Register</h2>
+    <input type="text" id="regUsername" placeholder="Username">
+    <input type="password" id="regPassword" placeholder="Password">
+    <input type="email" id="regEmail" placeholder="Email Address">
+    <div style="display: flex; flex-direction: column; gap: 30px; margin-top: 20px;">
+      <button id="registerBtn">Register</button>
+      <button id="cancelRegisterBtn">Cancel</button>
+    </div>
+    <p id="registerStatus"></p>
+  </div>
+
+  <div class="card" id="uploadSection" style="display:none;">
+    <h2>Upload File</h2>
+    <input type="file" id="fileInput" multiple style="margin-bottom: 20px;">
+    <button id="uploadBtn" style="margin-bottom: 24px;">Upload</button>
+    <div id="uploadProgressContainer"></div>
+    <p id="uploadStatus"></p>
+    <h3 style="margin-top: 32px;">Your Files</h3>
+    <div id="fileListContainer">
+      <div id="fileListHeader" style="display:flex;gap:10px;justify-content:center;margin-bottom:10px;">
+        <button id="createFolderBtn" style="width:auto;">📁 New Folder</button>
+        <select id="sortFiles">
+          <option value="name">Sort by Name</option>
+          <option value="date">Sort by Date</option>
+          <option value="size">Sort by Size</option>
+        </select>
+        <input type="text" id="filterFiles" placeholder="Search file..." style="width:120px;">
+      </div>
+      <div id="folderPath" style="margin: 0 0 10px 0; text-align:left;"></div>
+      <ul id="fileList" style="padding: 0; list-style: none; margin: 0;"></ul>
+    </div>
+    <button id="logoutBtn" style="margin-top: 32px; background-color: #e74c3c;">Logout</button>
+  </div>
+
+  <div class="card" id="twofaSection" style="display:none;">
+    <h2>Enter 2FA Code</h2>
+    <input type="hidden" id="twofaUsername">
+    <input type="text" id="twofaCode" placeholder="6-digit code">
+    <button id="verify2faBtn">Verify & Login</button>
+    <p id="twofaStatus"></p>
+  </div>
+
+  <div id="settingsModal">
+    <div class="settings-card">
+      <button class="close-btn" onclick="document.getElementById('settingsModal').style.display='none'">✖️</button>
+      <h2>User Settings</h2>
+      <div class="settings-row">
+        <label for="settingsEmail">Email:</label>
+        <input type="email" id="settingsEmail" autocomplete="off">
+        <button onclick="updateEmail()">Update Email</button>
+      </div>
+      <div class="settings-row">
+        <label for="settingsPassword">New Password:</label>
+        <input type="password" id="settingsPassword" autocomplete="off">
+        <button onclick="updatePassword()">Change Password</button>
+      </div>
+      <div class="settings-row dark-toggle-row">
+        <input type="checkbox" id="darkModeToggle">
+        <label for="darkModeToggle" style="margin:0;">Dark Mode</label>
+      </div>
+      <div id="settingsStatus"></div>
+    </div>
+  </div>
+  <button id="settingsBtn" style="
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background: #4286f4;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2em;
+    box-shadow: 0 2px 8px rgba(66,134,244,0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  ">⚙️</button>
+
+  <script src="script.js?v=100"></script>
+</body>
+</html>

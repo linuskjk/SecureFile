@@ -1,0 +1,293 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #4286f4 0%, #373b44 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 36px 32px 36px;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  width: 600px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+input, button {
+  display: block;
+  width: 90%;
+  margin: 18px auto;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #dbeafe;
+  font-size: 1.1rem;
+}
+
+button, .file-btns button {
+  border: 2px solid #4286f4;
+  background: #4286f4;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+button:hover, .file-btns button:hover {
+  background: #fff;
+  color: #4286f4;
+  border: 2px solid #4286f4;
+}
+
+#logoutBtn {
+  background-color: #e74c3c;
+}
+
+#logoutBtn:hover {
+  background-color: #c0392b;
+}
+
+#fileListContainer {
+  max-height: 400px; /* was 180px */
+  min-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  background: #f8faff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#fileListHeader {
+  padding: 8px 16px 0 16px;
+  background: #f8faff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#fileList {
+  padding: 8px 0 8px 0;
+  margin: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+#fileList > li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#fileList > li b {
+  font-weight: 500;
+}
+
+#fileList > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.file-frame {
+  background: #f5f8ff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(66,134,244,0.07);
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.file-name {
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: #222;
+  word-break: break-all;
+}
+
+.file-btns {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+progress {
+  height: 18px;
+  border-radius: 8px;
+  background: #e0e7ef;
+  accent-color: #4286f4;
+}
+
+body.dark-mode {
+  background: #181c24;
+  color: #e0e6f0;
+}
+body.dark-mode .card {
+  background: #232837;
+  color: #e0e6f0;
+}
+body.dark-mode input, body.dark-mode button, body.dark-mode select {
+  background: #232837;
+  color: #e0e6f0;
+  border-color: #444a5a;
+}
+body.dark-mode input, body.dark-mode select {
+  border: 1.5px solid #4286f4;
+}
+body.dark-mode #fileListContainer {
+  background: #232837;
+}
+body.dark-mode .file-frame {
+  background: #232837;
+  color: #e0e6f0;
+}
+body.dark-mode #fileListHeader {
+  background: #232837;
+}
+
+/* Settings Modal */
+#settingsModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+#settingsModal .settings-card {
+  background: #fff;
+  color: #222;
+  padding: 36px 32px 28px 32px;
+  border-radius: 18px;
+  min-width: 320px;
+  max-width: 90vw;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#settingsModal h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+#settingsModal label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+#settingsModal input[type="email"],
+#settingsModal input[type="password"] {
+  width: 220px;
+  margin: 8px 0 16px 0;
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #dbeafe;
+  font-size: 1em;
+  background: #f8faff;
+}
+
+#settingsModal button:not(.close-btn) {
+  width: 100%;
+  margin: 8px 0 14px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #4286f4;
+  color: #fff;
+  border: none;
+  font-size: 1.08em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#settingsModal button:not(.close-btn):hover {
+  background: #3066c7;
+}
+
+#settingsModal .close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.7em;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+#settingsModal .close-btn:hover {
+  color: #e74c3c;
+}
+
+#settingsModal .settings-row {
+  width: 100%;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#settingsModal #settingsStatus {
+  color: #e74c3c;
+  margin-top: 6px;
+  min-height: 20px;
+}
+
+#settingsModal #settings2faStatus {
+  color: #4286f4;
+  margin-left: 8px;
+}
+
+#settingsModal .dark-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+/* Dark mode for modal */
+body.dark-mode #settingsModal .settings-card {
+  background: #232837;
+  color: #e0e6f0;
+}
+body.dark-mode #settingsModal input[type="email"],
+body.dark-mode #settingsModal input[type="password"] {
+  background: #232837;
+  color: #e0e6f0;
+  border-color: #444a5a;
+}
+body.dark-mode #settingsModal button:not(.close-btn) {
+  background: #3066c7;
+  color: #fff;
+}
+body.dark-mode #settingsModal button:not(.close-btn):hover {
+  background: #4286f4;
+}
+body.dark-mode #settingsModal .close-btn {
+  color: #aaa;
+}
+body.dark-mode #settingsModal .close-btn:hover {
+  color: #e74c3c;
+}
